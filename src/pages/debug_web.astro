@@ -1,0 +1,63 @@
+---
+import tasks from "../json/TODO.js";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>D'Libertti</title>
+  </head>
+  <body>
+    <header class="flex justify-center pt-6 italic text-6xl">TODO</header>
+    <p class="flex justify-center">
+      Welcome to the D'Libertti webpage develepend dashboard
+    </p>
+    <p class="flex justify-center text-2xl">Hello World :)</p>
+
+    <hr class="my-2 border-t-2 border-gray-400" />
+
+    <!-- List of implementations-->
+    <ul class="space-y-4">
+      {
+        tasks.map((task) => (
+          <li class="p-4 border rounded-md hover:bg-gray-100 relative group">
+            <div class="font-bold">{task.Name}</div>
+            <div class="text-gray-600">{task.Status}</div>
+            <div class="hidden group-hover:block absolute inset-0 bg-white bg-opacity-90 p-4 border rounded-md shadow-lg z-10">
+              <div class="absolute top-0 right-0 mt-2 mr-2" />
+              <div>{task.Description}</div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex justify-center pt-20">
+      <button
+        onclick="window.location.href='src/pages/debug.astro'"
+        class="bg-green-600 border-3 hover:bg-cyan-400 hover:text-blue-600"
+      >
+        Start Coding!!
+      </button>
+    </div>
+
+    <style>
+      li:hover > div.hidden {
+        display: block;
+      }
+    </style>
+  </body>
+
+  <script>
+    const button = document.getElementById("redirect");
+
+    // Handle clicks on each button.
+    button.addEventListener("click", () => {
+      console.log("hello");
+      window.location.href = "debug";
+    });
+  </script>
+</html>
